@@ -23,11 +23,11 @@ for col in categorical_cols:
 # Ensure there are no more missing values
 #print(dinosaurs.isnull().sum())  
 
-# Q1) The number of different dinosaur names from the name column
+# The number of different dinosaur names from the name column
 dinosaur_names = dinosaurs['name'].nunique()
 print(f"The total number of different dinosaur names are {dinosaur_names}.")
 
-# Q2) Checking for the largest dinosaur from the length column
+# Checking for the largest dinosaur from the length column
 # Fill missing values in the column with the mean value
 dinosaurs['length_m'].fillna(dinosaurs['length_m'].mean(), inplace=True)
 
@@ -35,7 +35,7 @@ dinosaurs['length_m'].fillna(dinosaurs['length_m'].mean(), inplace=True)
 largest_dinosaur = dinosaurs.loc[dinosaurs['length_m'].idxmax()]
 print(f"The largest dinosaur is {largest_dinosaur['name']} with a maximum head to tail length of {largest_dinosaur['length_m']} meters.")
 
-# Q3) The most occuring dinosaur type
+# The most occuring dinosaur type
 # Check for the distribution from the type column
 dinosaur_types = dinosaurs['type'].value_counts()
 
@@ -48,7 +48,7 @@ plt.ylabel('Count')
 plt.xticks(rotation=45)
 plt.show()
 
-# Q4) Finding out if dinosaurs got bigger over time
+# Finding out if dinosaurs got bigger over time
 # Calculate the average age (mid-point) for each dinosaur
 dinosaurs['average_ma'] = (dinosaurs['max_ma'] + dinosaurs['min_ma']) / 2
 
@@ -71,9 +71,9 @@ plt.gca().invert_xaxis()
 plt.show()
 
 # Print the trend line equation
-#rint(f'Trend line equation: size = {z[0]} * age + {z[1]}')
+#print(f'Trend line equation: size = {z[0]} * age + {z[1]}')
 
-# Q5) Create an interactive map showing each record
+# Create an interactive map showing each record
 # Initialize the map centered around the mean latitude and longitude
 map_center = [dinosaurs['lat'].mean(), dinosaurs['lng'].mean()]
 dino_map = folium.Map(location=map_center, zoom_start=2)
